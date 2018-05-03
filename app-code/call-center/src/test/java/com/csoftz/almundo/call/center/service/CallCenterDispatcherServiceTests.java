@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Source File:   CALLCENTERSERVICETESTS.JAVA                                 */
+/* Source File:   CALLCENTERDISTPATCHERSERVICETESTS.JAVA                      */
 /* Description:   Call Center Service tests                                   */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          May.02/2018                                                 */
@@ -11,10 +11,9 @@
  History
  May.02/2018  COQ  File created.
  -----------------------------------------------------------------------------*/
-
 package com.csoftz.almundo.call.center.service;
 
-import com.csoftz.almundo.call.center.service.intr.CallCenterService;
+import com.csoftz.almundo.call.center.service.intr.CallCenterDispatcherService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +29,13 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class CallCenterServiceTests {
+public class CallCenterDispatcherServiceTests {
     @Autowired
-    private CallCenterService callCenterService;
+    private CallCenterDispatcherService callCenterService;
 
     @Test
-    public void given1() {
-        //callCenterService.receiveCall("123");
-        callCenterService.dispatchCall("123");
+    public void givenPhoneNumberWhenNumberIsNullThenError() {
+        String phoneNumber = null;
+        callCenterService.dispatchCall(phoneNumber);
     }
 }

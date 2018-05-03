@@ -13,6 +13,7 @@
  -----------------------------------------------------------------------------*/
 package com.csoftz.almundo.call.center.service;
 
+import com.csoftz.almundo.call.center.service.intr.CallCenterDispatcherService;
 import com.csoftz.almundo.call.center.service.intr.EmployeeService;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ import org.springframework.stereotype.Service;
  * @since 1.8 (JDK), May.02/2018
  */
 @Service
-public class CallCenterDispatcherServiceImpl {
+public class CallCenterDispatcherServiceImpl implements CallCenterDispatcherService {
     private EmployeeService employeeService;
 
     /**
@@ -34,5 +35,10 @@ public class CallCenterDispatcherServiceImpl {
      */
     public CallCenterDispatcherServiceImpl(EmployeeService employeeService) {
         this.employeeService = employeeService;
+    }
+
+    @Override
+    public void dispatchCall(String phoneNumber) {
+
     }
 }

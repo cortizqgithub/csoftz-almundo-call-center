@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Source File:   CALLCENTERSERVICE.JAVA                                      */
+/* Source File:   CALLCENTERDISPATCHERSERVICE.JAVA                            */
 /* Description:   Interface for handling call center duties.                  */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          May.02/2018                                                 */
@@ -20,5 +20,7 @@ package com.csoftz.almundo.call.center.service.intr;
  * @version 1.1, May.02/2018
  * @since 1.8 (JDK), May.02/2018
  */
-public interface CallCenterService {
+public interface CallCenterDispatcherService {
+
+    public void dispatchCall(String phoneNumber);
 }
