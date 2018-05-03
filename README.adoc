@@ -1,0 +1,9 @@
+= csoftz-almundo-call-center
+V1.0.0-May.02/2018
+
+== app-code
+
+
+== docs
+Here you can read the whole project documentation as an Ascidoctor (https://asciidoctor.org/) 
+format, which allows to write in plain text and generate documents HTML, PDF, and other formats.
