@@ -1,0 +1,21 @@
+= Problem 
+There is a call center where there are three types of employees: operator, supervisor and director. The 
+process of attending a telephone call in the first instance must be attended by an operator, 
+if there is not a free one, it must be attended by a supervisor, and if there are not free supervisors, 
+it must be attended by a director.
+
+== Requirements
+The system must adhere to the following rules:
+
+* Design the modeling of classes and the UML diagrams needed to document and communicate the design.
+* There must be a Dispatcher class that handles the calls, and must contain the dispatchCall method to 
+assign them to available employees.
+* The Dispatcher class must have the ability to process ten calls at the same time (concurrently).
+* Each call can last a random time between five and ten seconds.
+* It must have a unit test where it processes ten calls.
+
+=== Extras
+* Give a solution when a incoming call cannot be attended as all employees are busy.
+* Give a solution when 10 concurrent incoming calls are being attended.
+* Add all necessary unit tests.
+* Add source code documentation.

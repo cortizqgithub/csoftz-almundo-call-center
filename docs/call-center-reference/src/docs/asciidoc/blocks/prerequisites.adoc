@@ -1,0 +1,10 @@
+= Prerequisites
+
+Gradlew configuration??????
+https://medium.com/@bherbst/understanding-the-gradle-wrapper-a62f35662ab7
+
+
+Jenkins
+Sonar
+SonarLint (Inside Eclipse)
+Coverage (Inside Eclipse)-->EclEmma Java Code Coverage 3.0.0 Installed through Eclipse Marketplace.

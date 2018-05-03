@@ -1,0 +1,14 @@
+This is a gradle project to write and compile the ASCIIDOCTOR files to generate 
+HTML, PDF, DocBook & epub3 backends for the Guide Steps
+
+NOTE: You must have Java 8 installed, ASCIIDOCTOR with the gradle plugin. Thus, in order to use this 
+document generator refer to the usage section below.
+ 
+== Usage
+
+Convert the AsciiDoc to HTML, PDF, DocBook & epub3 by invoking the 'asciidoctor' goal:
+
+ $ ./gradlew asciidoc
+
+ NOTE: You must use Java 8 runtime with Gradle V3.5.1.
+

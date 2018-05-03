@@ -1,0 +1,4 @@
+= Technological Stack
+This solution is going to be built using Spring Boot 2.0.1 as a web and REST framework for the backend, using Java 9 as the JDK.
+
+== Initial Architecture

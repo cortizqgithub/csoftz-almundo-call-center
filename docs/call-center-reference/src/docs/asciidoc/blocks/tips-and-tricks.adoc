@@ -1,0 +1,54 @@
+= Tips and Tricks
+In this section you will find anything that is useful to the project and
+it is a log for knowledge and a reference as well.
+
+== Gradle
+Getting Started With Gradle: Introduction
+https://www.petrikainulainen.net/programming/gradle/getting-started-with-gradle-introduction/
+
+Getting Started With Gradle: Our First Java Project
+https://www.petrikainulainen.net/programming/gradle/getting-started-with-gradle-our-first-java-project/
+
+Getting Started With Gradle: Creating a Spring Boot Web Application.
+https://www.petrikainulainen.net/programming/gradle/getting-started-with-gradle-creating-a-spring-boot-web-application-project/
+
+Using the Gradle build system in the Eclipse IDE - Tutorial
+http://www.vogella.com/tutorials/EclipseGradle/article.html
+
+Compile gradle project with another project as a dependency
+https://looksok.wordpress.com/2014/07/12/compile-gradle-project-with-another-project-as-a-dependency/
+
+Gradle Include Dependency on another Project and Execution Order
+http://www.concretepage.com/build-tools/gradle/gradle-include-dependency-on-another-project-execution-order
+
+NOTE: The Gradle Include Dependency on another Project and Execution Order has a ZIP for source code
+for you to learn and use.
+
+== Software Testing
+TESTING SOFTWARE
+https://springframework.guru/testing-software/
+
+=== Unit Testing 
+The Benefits of Using assertThat over other Assert Methods in Unit Tests
+https://objectpartners.com/2013/09/18/the-benefits-of-using-assertthat-over-other-assert-methods-in-unit-tests/
+
+AssertJ
+Fluent assertions for java
+http://joel-costigliola.github.io/assertj/
+
+MOCKING IN UNIT TESTS WITH MOCKITO
+https://springframework.guru/mocking-unit-tests-mockito/
+
+MOCKITO MOCK VS SPY IN SPRING BOOT TESTS
+https://springframework.guru/mockito-mock-vs-spy-in-spring-boot-tests/
+
+=== Integration Testing
+Integration Testing in Spring
+http://www.baeldung.com/integration-testing-in-spring
+
+PROPERLY TESTING SPRING MVC CONTROLLERS
+http://blog.trifork.com/2012/12/11/properly-testing-spring-mvc-controllers/
+
+== Http
+HTTP Status Codes
+https://httpstatuses.com/

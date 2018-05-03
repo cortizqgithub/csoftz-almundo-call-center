@@ -1,0 +1,34 @@
+:title: Call Center Reference
+:author: CSoftZ - Carlos Adolfo Ortiz Q.
+:email:  carlosaortiz@yahoo.com 
+:revnumber: 1.0.0
+:revdate:   {docdate}
+:subject: Call Center Reference
+:keywords: Java.
+:doctype: book
+:toc: 
+:toc-title: Contents
+:toclevels: 5
+:icons: font
+:lang: en
+:language: javadocript
+ifndef::ebook-format[:leveloffset: 1]
+= {title}
+
+[colophon]
+include::blocks/colophon.adoc[]
+
+[preface]
+include::blocks/preface.adoc[]
+
+include::blocks/introduction.adoc[]
+
+include::blocks/problem.adoc[]
+
+include::blocks/architecture.adoc[]
+
+include::blocks/prerequisites.adoc[]
+
+include::blocks/compilation.adoc[]
+
+include::blocks/tips-and-tricks.adoc[]
