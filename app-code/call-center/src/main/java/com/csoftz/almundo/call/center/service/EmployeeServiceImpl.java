@@ -106,19 +106,19 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employeeList.size() != 0) {
             employee = employeeList.get(0);
             employee.setEmployeeStatus(EmployeeStatus.ATTENDING);
-            log.debug("Employeed retrieved [{}]", employee);
+            log.debug("Employee retrieved [{}]", employee);
         } else {
             employeeList = this.retrieveAll(EmployeeType.SUPERVISOR, EmployeeStatus.WAITING);
             if (employeeList.size() != 0) {
                 employee = employeeList.get(0);
                 employee.setEmployeeStatus(EmployeeStatus.ATTENDING);
-                log.debug("Employeed retrieved [{}]", employee);
+                log.debug("Employee retrieved [{}]", employee);
             } else {
                 employeeList = this.retrieveAll(EmployeeType.DIRECTOR, EmployeeStatus.WAITING);
                 if (employeeList.size() != 0) {
                     employee = employeeList.get(0);
                     employee.setEmployeeStatus(EmployeeStatus.ATTENDING);
-                    log.debug("Employeed retrieved [{}]", employee);
+                    log.debug("Employee retrieved [{}]", employee);
                 }
             }
         }
