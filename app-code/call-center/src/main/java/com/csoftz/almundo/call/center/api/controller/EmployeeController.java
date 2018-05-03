@@ -3,7 +3,7 @@
 /* Description:   Rest API Employee Controller                                */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          May.02/2018                                                 */
-/* Last Modified: May.02/2018                                                 */
+/* Last Modified: May.03/2018                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2018 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
@@ -25,7 +25,7 @@ import java.util.List;
  * Rest API Employee Controller
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, May.02/2018
+ * @version 1.1, May.03/2018
  * @since 1.8 (JDK), May.02/2018
  */
 @RestController
@@ -46,7 +46,7 @@ public class EmployeeController {
      * REST API Get entry point to gather all registered employees.
      * GET: /api/v1/employee/all
      *
-     * @return
+     * @return List of employees set (in-memory storate) in system.
      */
     @GetMapping("/all")
     public List<Employee> getAll() {

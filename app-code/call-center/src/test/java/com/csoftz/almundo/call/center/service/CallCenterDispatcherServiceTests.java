@@ -13,6 +13,8 @@
  -----------------------------------------------------------------------------*/
 package com.csoftz.almundo.call.center.service;
 
+import com.csoftz.almundo.call.center.common.EmployeeType;
+import com.csoftz.almundo.call.center.common.IncomingCallStatus;
 import com.csoftz.almundo.call.center.domain.IncomingCall;
 import com.csoftz.almundo.call.center.service.intr.CallCenterDispatcherService;
 import org.junit.Test;
@@ -65,12 +67,16 @@ public class CallCenterDispatcherServiceTests {
     /**
      * Given Phone Number
      * When supplied phone number is not Empty
-     * Then return message that call is being attended.
+     * Then return message that call is being attended and other da
      */
     @Test
     public void givenPhoneNumberWhenNumberIsNotEmptyThenCallIsBeingAttended() {
         String phoneNumber = "355647886125";
         IncomingCall rslt = callCenterService.dispatchCall(phoneNumber);
+        assertThat(rslt.getPhoneNumber()).isEqualTo(phoneNumber);
+        assertThat(rslt.getIncomingCallStatus()).isEqualTo(IncomingCallStatus.IN_PROGRESS);
+        assertThat(rslt.getAttendingEmployee()).isNotNull();
+        assertThat(rslt.getAttendingEmployee().getEmployeeType()).isEqualTo(EmployeeType.OPERATOR);
         assertThat(rslt.getStatusMsg()).isEqualTo(CALL_CENTER_DISPATCHER_CALL_IN_PROGRESS);
     }
 }

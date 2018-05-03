@@ -13,6 +13,7 @@
  -----------------------------------------------------------------------------*/
 package com.csoftz.almundo.call.center.service;
 
+import com.csoftz.almundo.call.center.common.IncomingCallStatus;
 import com.csoftz.almundo.call.center.domain.IncomingCall;
 import com.csoftz.almundo.call.center.service.intr.CallCenterDispatcherService;
 import com.csoftz.almundo.call.center.service.intr.EmployeeService;
@@ -46,15 +47,20 @@ public class CallCenterDispatcherServiceImpl implements CallCenterDispatcherServ
 
     @Override
     public IncomingCall dispatchCall(String phoneNumber) {
-        log.debug("Calling dispatchCall");
+        log.debug("Calling dispatchCall()");
 
-        IncomingCall incomingCall = IncomingCall.builder().build();
-        incomingCall.setStatusMsg(CALL_CENTER_DISPATCHER_CALL_IN_PROGRESS);
+        IncomingCall incomingCall = IncomingCall.builder().phoneNumber(phoneNumber).build();
+
         if (phoneNumber == null || phoneNumber.isEmpty()) {
             log.info("Invalid phoneNumber parameter found");
             incomingCall.setStatusMsg(CALL_CENTER_DISPATCHER_NULL_PHONE_NUM_SUPLLIED);
+        } else {
+            incomingCall.setIncomingCallStatus(IncomingCallStatus.IN_PROGRESS);
+            incomingCall.setStatusMsg(CALL_CENTER_DISPATCHER_CALL_IN_PROGRESS);
+            incomingCall.setAttendingEmployee(this.employeeService.retrieveAvailable());
+            log.info("Dispatching call with phoneNumber=[{}]", phoneNumber);
         }
-        log.info("Dispatching call with phoneNumber=[{}]", phoneNumber);
+        log.debug("IncomingCall data is set to [{}]", incomingCall);
         return incomingCall;
     }
 }

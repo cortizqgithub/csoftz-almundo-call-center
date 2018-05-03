@@ -302,7 +302,7 @@ public class EmployeeServiceTests {
         String callAssignedToEmpStatus = callAssignedTo.getEmployeeStatus().name();
         callAssignedTo.setEmployeeStatus(EmployeeStatus.WAITING);
         operatorList.forEach(e -> e.setEmployeeStatus(EmployeeStatus.WAITING));
-        supervisorList.forEach(e-> e.setEmployeeStatus(EmployeeStatus.WAITING));
+        supervisorList.forEach(e -> e.setEmployeeStatus(EmployeeStatus.WAITING));
 
         // Assert
         assertThat(callAssignedToEmpType).isEqualTo(EmployeeType.DIRECTOR.name());
@@ -312,11 +312,11 @@ public class EmployeeServiceTests {
     @Test
     public void givenEmployeeListWhenAllEmployeesAttendingThenReturnNoEmployeeAssignedNull() {
         // Prepare
-        employeeList.forEach(e->e.setEmployeeStatus(EmployeeStatus.ATTENDING));
+        employeeList.forEach(e -> e.setEmployeeStatus(EmployeeStatus.ATTENDING));
 
         // Act
         Employee employee = employeeService.retrieveAvailable();
-        employeeList.forEach(e->e.setEmployeeStatus(EmployeeStatus.WAITING));
+        employeeList.forEach(e -> e.setEmployeeStatus(EmployeeStatus.WAITING));
 
         // Assert
         assertThat(employee).isNull();
