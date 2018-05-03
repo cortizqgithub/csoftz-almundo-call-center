@@ -3,7 +3,7 @@
 /* Description:   Implementation for service for handling employees.          */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          May.02/2018                                                 */
-/* Last Modified: May.02/2018                                                 */
+/* Last Modified: May.03/2018                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2018 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
  * Implementation for service for handling employees.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, May.02/2018
+ * @version 1.1, May.03/2018
  * @since 1.8 (JDK), May.02/2018
  */
 @Service
@@ -50,7 +50,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      */
     @Override
     public List<Employee> retrieveAll() {
-        log.debug("Call retrieveAll no params");
+        log.debug("Call retrieveAll() no params");
         return this.employeeList;
     }
 
@@ -93,5 +93,35 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeList.stream().
             filter(e -> e.getEmployeeType() == employeeType && e.getEmployeeStatus() == employeeStatus).
             collect(Collectors.toList());
+    }
+
+    /**
+     * @see EmployeeService#retrieveAvailable()
+     */
+    @Override
+    public Employee retrieveAvailable() {
+        log.debug("Call retrieveAvailable() ");
+        Employee employee = null;
+        List<Employee> employeeList = this.retrieveAll(EmployeeType.OPERATOR, EmployeeStatus.WAITING);
+        if (employeeList.size() != 0) {
+            employee = employeeList.get(0);
+            employee.setEmployeeStatus(EmployeeStatus.ATTENDING);
+            log.debug("Employeed retrieved [{}]", employee);
+        } else {
+            employeeList = this.retrieveAll(EmployeeType.SUPERVISOR, EmployeeStatus.WAITING);
+            if (employeeList.size() != 0) {
+                employee = employeeList.get(0);
+                employee.setEmployeeStatus(EmployeeStatus.ATTENDING);
+                log.debug("Employeed retrieved [{}]", employee);
+            } else {
+                employeeList = this.retrieveAll(EmployeeType.DIRECTOR, EmployeeStatus.WAITING);
+                if (employeeList.size() != 0) {
+                    employee = employeeList.get(0);
+                    employee.setEmployeeStatus(EmployeeStatus.ATTENDING);
+                    log.debug("Employeed retrieved [{}]", employee);
+                }
+            }
+        }
+        return employee;
     }
 }

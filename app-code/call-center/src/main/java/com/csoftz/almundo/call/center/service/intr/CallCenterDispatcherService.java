@@ -3,7 +3,7 @@
 /* Description:   Interface for handling call center duties.                  */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          May.02/2018                                                 */
-/* Last Modified: May.02/2018                                                 */
+/* Last Modified: May.03/2018                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2018 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
@@ -13,14 +13,16 @@
  -----------------------------------------------------------------------------*/
 package com.csoftz.almundo.call.center.service.intr;
 
+import com.csoftz.almundo.call.center.domain.IncomingCall;
+
 /**
  * Interface for handling call center duties.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, May.02/2018
+ * @version 1.1, May.03/2018
  * @since 1.8 (JDK), May.02/2018
  */
 public interface CallCenterDispatcherService {
 
-    public void dispatchCall(String phoneNumber);
+    public IncomingCall dispatchCall(String phoneNumber);
 }

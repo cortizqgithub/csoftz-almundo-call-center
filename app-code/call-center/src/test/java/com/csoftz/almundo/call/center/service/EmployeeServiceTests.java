@@ -3,7 +3,7 @@
 /* Description:   Employe Service tests                                       */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          May.02/2018                                                 */
-/* Last Modified: May.02/2018                                                 */
+/* Last Modified: May.03/2018                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2018 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
@@ -32,7 +32,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Employe Service tests
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, May.02/2018
+ * @version 1.1, May.03/2018
  * @since 1.8 (JDK), May.02/2018
  */
 @RunWith(SpringRunner.class)
@@ -243,4 +243,82 @@ public class EmployeeServiceTests {
         assertThat(employeeListSize).isEqualTo(2);
     }
 
+    /**
+     * Given EmployeeList
+     * When All employees are waiting
+     * Then Assign to first OPERATOR available.
+     */
+    @Test
+    public void givenEmployeeListWhenAllEmployeesWaitingThenAssignToOperatorAttending() {
+        Employee callAssignedTo = employeeService.retrieveAvailable();
+        String callAssignedToEmpType = callAssignedTo.getEmployeeType().name();
+        String callAssignedToEmpStatus = callAssignedTo.getEmployeeStatus().name();
+        callAssignedTo.setEmployeeStatus(EmployeeStatus.WAITING);
+
+        assertThat(callAssignedToEmpType).isEqualTo(EmployeeType.OPERATOR.name());
+        assertThat(callAssignedToEmpStatus).isEqualTo(EmployeeStatus.ATTENDING.name());
+    }
+
+    /**
+     * Given EmployeeList
+     * When All Operators are Attending a phone call
+     * then Assign to first SUPERVISOR available
+     */
+    @Test
+    public void givenEmployeeListWhenAllOperatorsAreAttendingThenAssignToSupervisorAttending() {
+        // Prepare data
+        List<Employee> operatorList = employeeService.retrieveAll(EmployeeType.OPERATOR);
+        operatorList.forEach(e -> e.setEmployeeStatus(EmployeeStatus.ATTENDING));
+
+        // Act
+        Employee callAssignedTo = employeeService.retrieveAvailable();
+        String callAssignedToEmpType = callAssignedTo.getEmployeeType().name();
+        String callAssignedToEmpStatus = callAssignedTo.getEmployeeStatus().name();
+        callAssignedTo.setEmployeeStatus(EmployeeStatus.WAITING);
+        operatorList.forEach(e -> e.setEmployeeStatus(EmployeeStatus.WAITING));
+
+        // Assert
+        assertThat(callAssignedToEmpType).isEqualTo(EmployeeType.SUPERVISOR.name());
+        assertThat(callAssignedToEmpStatus).isEqualTo(EmployeeStatus.ATTENDING.name());
+    }
+
+    /**
+     * Given EmployeeList
+     * When All Operators and Supervisors are Attending a phone call
+     * then Assign to first DIRECTOR available
+     */
+    @Test
+    public void givenEmployeeListWhenAllOperatorsAndSupervisorsAreAttendingThenAssignToDirectorAttending() {
+        // Prepare data
+        List<Employee> operatorList = employeeService.retrieveAll(EmployeeType.OPERATOR);
+        operatorList.forEach(e -> e.setEmployeeStatus(EmployeeStatus.ATTENDING));
+
+        List<Employee> supervisorList = employeeService.retrieveAll(EmployeeType.SUPERVISOR);
+        supervisorList.forEach(e -> e.setEmployeeStatus(EmployeeStatus.ATTENDING));
+
+        // Act
+        Employee callAssignedTo = employeeService.retrieveAvailable();
+        String callAssignedToEmpType = callAssignedTo.getEmployeeType().name();
+        String callAssignedToEmpStatus = callAssignedTo.getEmployeeStatus().name();
+        callAssignedTo.setEmployeeStatus(EmployeeStatus.WAITING);
+        operatorList.forEach(e -> e.setEmployeeStatus(EmployeeStatus.WAITING));
+        supervisorList.forEach(e-> e.setEmployeeStatus(EmployeeStatus.WAITING));
+
+        // Assert
+        assertThat(callAssignedToEmpType).isEqualTo(EmployeeType.DIRECTOR.name());
+        assertThat(callAssignedToEmpStatus).isEqualTo(EmployeeStatus.ATTENDING.name());
+    }
+
+    @Test
+    public void givenEmployeeListWhenAllEmployeesAttendingThenReturnNoEmployeeAssignedNull() {
+        // Prepare
+        employeeList.forEach(e->e.setEmployeeStatus(EmployeeStatus.ATTENDING));
+
+        // Act
+        Employee employee = employeeService.retrieveAvailable();
+        employeeList.forEach(e->e.setEmployeeStatus(EmployeeStatus.WAITING));
+
+        // Assert
+        assertThat(employee).isNull();
+    }
 }

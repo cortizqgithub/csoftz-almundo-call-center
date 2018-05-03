@@ -3,7 +3,7 @@
 /* Description:   Interface for handling employees.                           */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          May.02/2018                                                 */
-/* Last Modified: May.02/2018                                                 */
+/* Last Modified: May.03/2018                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2018 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
@@ -23,7 +23,7 @@ import java.util.List;
  * Interface for handling employees.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, May.02/2018
+ * @version 1.1, May.03/2018
  * @since 1.8 (JDK), May.02/2018
  */
 public interface EmployeeService {
@@ -50,4 +50,15 @@ public interface EmployeeService {
      * @return List of filtered employees with such criteria.
      */
     List<Employee> retrieveAll(EmployeeType employeeType, EmployeeStatus employeeStatus);
+
+    /**
+     * Retrieves one of the available employees to attend a incoming call.
+     * Rules are as follows, it will pick one of the available OPERATORS, and
+     * if none is available then it will pick one of the available SUPERVISORS,
+     * and if none is available then it will pick one of the available DIRECTORS.
+     *
+     * @return NULL if there are not employees to attend and incoming call
+     * otherwise it will return an employee.
+     */
+    Employee retrieveAvailable();
 }
