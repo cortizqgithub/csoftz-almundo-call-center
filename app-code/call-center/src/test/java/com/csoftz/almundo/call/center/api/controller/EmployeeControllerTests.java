@@ -15,6 +15,7 @@ package com.csoftz.almundo.call.center.api.controller;
 
 import com.csoftz.almundo.call.center.common.EmployeeStatus;
 import com.csoftz.almundo.call.center.common.EmployeeType;
+import com.csoftz.almundo.call.center.service.intr.EmployeeService;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
@@ -46,12 +47,18 @@ public class EmployeeControllerTests {
     private WebApplicationContext webApplicationContext;
     private MockMvc mockMvc;
 
+    @Autowired
+    private EmployeeService employeeService;
+
     /**
      * Configure all tests initial settings.
      */
     @Before
     public void setup() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+
+        // The following is to ensure that employee list gets an initial value.
+        this.employeeService.retrieveAll().stream().forEach(e -> e.setEmployeeStatus(EmployeeStatus.WAITING));
     }
 
     /**

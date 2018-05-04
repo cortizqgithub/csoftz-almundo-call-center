@@ -5,4 +5,4 @@ spring:
 logging:
   level:
     root: info
-    com.csoftz.almundo.call.center : debug
+    com.csoftz.almundo.call.center : info

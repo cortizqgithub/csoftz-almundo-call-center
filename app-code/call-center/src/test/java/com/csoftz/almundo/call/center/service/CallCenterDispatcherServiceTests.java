@@ -13,17 +13,23 @@
  -----------------------------------------------------------------------------*/
 package com.csoftz.almundo.call.center.service;
 
+import com.csoftz.almundo.call.center.common.EmployeeStatus;
 import com.csoftz.almundo.call.center.common.EmployeeType;
 import com.csoftz.almundo.call.center.common.IncomingCallStatus;
+import com.csoftz.almundo.call.center.domain.Employee;
 import com.csoftz.almundo.call.center.domain.IncomingCall;
 import com.csoftz.almundo.call.center.service.intr.CallCenterDispatcherService;
+import com.csoftz.almundo.call.center.service.intr.EmployeeService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import static com.csoftz.almundo.call.center.common.consts.GlobalConstants.CALL_CENTER_DISPATCHER_CALL_IN_PROGRESS;
+import static com.csoftz.almundo.call.center.common.consts.GlobalConstants.CALL_CENTER_DISPATCHER_CALL_REJECTED;
 import static com.csoftz.almundo.call.center.common.consts.GlobalConstants.CALL_CENTER_DISPATCHER_NULL_PHONE_NUM_SUPLLIED;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,6 +45,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CallCenterDispatcherServiceTests {
     @Autowired
     private CallCenterDispatcherService callCenterService;
+
+    @Autowired
+    private EmployeeService employeeService;
 
     /**
      * Given Phone Number
@@ -67,7 +76,7 @@ public class CallCenterDispatcherServiceTests {
     /**
      * Given Phone Number
      * When supplied phone number is not Empty
-     * Then return message that call is being attended and other da
+     * Then return message that call is being attended and other data.
      */
     @Test
     public void givenPhoneNumberWhenNumberIsNotEmptyThenCallIsBeingAttended() {
@@ -78,5 +87,19 @@ public class CallCenterDispatcherServiceTests {
         assertThat(rslt.getAttendingEmployee()).isNotNull();
         assertThat(rslt.getAttendingEmployee().getEmployeeType()).isEqualTo(EmployeeType.OPERATOR);
         assertThat(rslt.getStatusMsg()).isEqualTo(CALL_CENTER_DISPATCHER_CALL_IN_PROGRESS);
+    }
+
+    @Test
+    public void givenPhoneNumberWhenAllEmployeesAttendingThenAttendingEmpl() {
+        String phoneNumber = "355647886126";
+        List<Employee> employeeList = employeeService.retrieveAll();
+        employeeList.forEach(e -> e.setEmployeeStatus(EmployeeStatus.ATTENDING));
+        IncomingCall rslt = callCenterService.dispatchCall(phoneNumber);
+        employeeList.forEach(e -> e.setEmployeeStatus(EmployeeStatus.WAITING));
+
+        assertThat(rslt.getPhoneNumber()).isEqualTo(phoneNumber);
+        assertThat(rslt.getIncomingCallStatus()).isEqualTo(IncomingCallStatus.CANCELLED);
+        assertThat(rslt.getAttendingEmployee()).isNull();
+        assertThat(rslt.getStatusMsg()).isEqualTo(CALL_CENTER_DISPATCHER_CALL_REJECTED);
     }
 }

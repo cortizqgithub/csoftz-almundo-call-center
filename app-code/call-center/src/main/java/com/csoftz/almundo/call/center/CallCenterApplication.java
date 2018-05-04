@@ -47,6 +47,6 @@ public class CallCenterApplication implements CommandLineRunner {
      */
     @Override
     public void run(String... args) throws Exception {
-        log.info("Call Center Dispatcher App V1.0.0 RELEASE May.02/2018");
+        log.info("Call Center Dispatcher App V1.0.0 RELEASE May.03/2018");
     }
 }

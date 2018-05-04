@@ -309,6 +309,11 @@ public class EmployeeServiceTests {
         assertThat(callAssignedToEmpStatus).isEqualTo(EmployeeStatus.ATTENDING.name());
     }
 
+    /**
+     * Given EmployList
+     * When all employees are busy
+     * Then return NULL indicating that no available employee can attend incoming call.
+     */
     @Test
     public void givenEmployeeListWhenAllEmployeesAttendingThenReturnNoEmployeeAssignedNull() {
         // Prepare

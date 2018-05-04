@@ -15,6 +15,8 @@ package com.csoftz.almundo.call.center.api.controller;
 
 import com.csoftz.almundo.call.center.domain.IncomingCall;
 import com.csoftz.almundo.call.center.service.intr.CallCenterDispatcherService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +35,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/call-center")
 public class CallCenterController {
+    private static final Logger log = LoggerFactory.getLogger(CallCenterController.class);
     private CallCenterDispatcherService callCenterDispatcherService;
 
     /**
@@ -53,6 +56,7 @@ public class CallCenterController {
      */
     @GetMapping("/make/call/{phoneNumber}")
     public IncomingCall makeCall(@PathVariable String phoneNumber) {
+        log.debug("Calling makeCall()");
         return callCenterDispatcherService.dispatchCall(phoneNumber);
     }
 
@@ -65,6 +69,7 @@ public class CallCenterController {
      */
     @GetMapping("/simulate/multiple/calls/{times}")
     public List<IncomingCall> simulateMultipleCalls(@PathVariable Integer times) {
+        log.debug("Calling simulateMultipleCalls");
         List<IncomingCall> incomingCallList = new ArrayList<>();
         for (int i = 0; i < times; i++) {
             String phoneNumber = "5743" + Integer.valueOf(i).toString();
