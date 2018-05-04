@@ -1,7 +1,4 @@
 = Preface
-
-*[red]#TODO: Replace the code examples below with code examples from this book.#*
-
 We use a number of typographical conventions within this book that distinguish between different kinds of information.
 
 Code in the text, including commands, variables, file names, CSS class names, and property names are shown as follows:
@@ -10,7 +7,6 @@ Code in the text, including commands, variables, file names, CSS class names, an
 A block of code is set out as follows. It may be colored, depending on the format in which you're reading this book.
 
 [source,html]
-.src/main/webapp/form.html
 ----
 <form ng-submit="search()">
     <input type="search" name="search" ng-model="term">
@@ -19,7 +15,6 @@ A block of code is set out as follows. It may be colored, depending on the forma
 ----
 
 [source,java]
-.src/main/java/demo/DemoApplication.java
 ----
 @RestController
 class BlogController {

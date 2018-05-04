@@ -1,4 +1,14 @@
 = Technological Stack
 This solution is going to be built using Spring Boot 2.0.1 as a web and REST framework for the backend, using Java 9 as the JDK.
 
-== Initial Architecture
+== Project Structure
+The _Src_ folder follows the _Maven_ project structure which holds the 
+_java_ and _test_ folders. They contain the following _Java_ packages:
+
+* *com.csoftz.almundo.call.center.api:* The REST controller classes.
+* *com.csoftz.almundo.call.center.common:* Contains the cross-cutting classes used by all other modules in the system.
+* *com.csoftz.almundo.call.center.concurrent:* Classes about the Runnable or concurrent programming involved in Central Call Center application.
+* *com.csoftz.almundo.call.center.domain:* Classes to model the problem world.
+* *com.csoftz.almundo.call.center.service:* Classes to act as services (injected as dependencies).
+* *com.csoftz.almundo.call.center.CallCenterApplication:* Spring Boot main entry class for execution.
+

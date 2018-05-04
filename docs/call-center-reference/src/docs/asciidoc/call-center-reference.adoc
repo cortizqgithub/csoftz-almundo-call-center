@@ -31,4 +31,4 @@ include::blocks/prerequisites.adoc[]
 
 include::blocks/compilation.adoc[]
 
-include::blocks/tips-and-tricks.adoc[]
+include::blocks/tips-and-tricks.adoc[] 

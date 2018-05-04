@@ -1,1 +1,30 @@
 = Compilation
+If you want to compile the _Java_ application, go to folder _app-code/call-center_.
+To compile use the following commands.
+
+[source, terminal]
+----
+$ cd app-code
+$ cd call-center
+$ ./mvnw clean package
+----
+
+[NOTE]
+====
+The executable is found in this project's target folder.
+====
+
+If you want to compile the documentation,go to folder _docs/call-center-reference_.
+To compile use the following commands.
+
+[source, terminal]
+----
+$ cd docs
+$ cd call-center-reference
+$ ./gradlew asciidoc
+----
+
+[NOTE]
+====
+The executable is found in this project's build folder.
+====

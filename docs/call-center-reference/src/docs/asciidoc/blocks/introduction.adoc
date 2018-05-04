@@ -1,3 +1,5 @@
 = Introduction
-Well, you are now reading this book which purpose is to put all my notes in one place. A place to gather
-my knowledge. 
+This is to document the challenge of implementing a Call Center to gain access to user knowledge about
+*_Java_* programming concepts.
+
+The *_Maven_* project contained here is using _Spring Boot V2.0.1_ or later, using JDK 8 or later.

@@ -1,9 +1,49 @@
 = csoftz-almundo-call-center
-V1.0.0-May.02/2018
+V1.0.0-May.03/2018
 
-== app-code
+This is a challenge for Almundo technical probation. If you want to know 
+the problem you can read the PDF or HTML documentation generated
+by Ascidoctor in the docs folder (read along for instructions).
 
+== app-code/call-center
+In this folder you are to find all of the Java code implementation along with
+tests.
 
-== docs
+There are 28 tests with the following code coverage:
+
+* 94% Classes
+* 92% Files covered
+
+NOTE: This was generated with IntelliJ Community 2018.1.
+
+To compile use the following commands.
+
+[source, terminal]
+----
+$ cd app-code
+$ cd call-center
+$ ./mvnw clean package
+----
+
+[NOTE]
+====
+The executable is found in this project's target folder.
+====
+
+== docs/call-center-reference
 Here you can read the whole project documentation as an Ascidoctor (https://asciidoctor.org/) 
 format, which allows to write in plain text and generate documents HTML, PDF, and other formats.
+
+To compile use the following commands.
+
+[source, terminal]
+----
+$ cd docs
+$ cd call-center-reference
+$ ./gradlew asciidoc
+----
+
+[NOTE]
+====
+The executable is found in this project's build folder.
+====
