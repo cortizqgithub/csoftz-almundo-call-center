@@ -12,3 +12,8 @@ _java_ and _test_ folders. They contain the following _Java_ packages:
 * *com.csoftz.almundo.call.center.service:* Classes to act as services (injected as dependencies).
 * *com.csoftz.almundo.call.center.CallCenterApplication:* Spring Boot main entry class for execution.
 
+The project has three REST end-points to allow you to see information. They are as follows:
+
+* */api/v1/employee/all* to view all registered employees
+* /api/v1/call-center/make/call/123* to make a call for phone number 123
+* /api/v1/call-center/simulate/multiple/calls/10* To simulate a 10 incoming calls.
